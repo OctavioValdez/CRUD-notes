@@ -1,0 +1,6 @@
+Flask
+boto3
+reportlab
+PyMySQL
+python-dotenv
+flask-cors
