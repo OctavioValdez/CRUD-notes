@@ -60,7 +60,7 @@ def create_nota():
 
     pdf_buffer.seek(0)
 
-    bucket.upload_file(pdf_buffer,bucket_name,f'{data["cliente"]}.pdf')
+    bucket.upload_fileobj(pdf_buffer,bucket_name,f'{data["cliente"]}.pdf')
     url = f"https://{bucket_name}.s3.amazonaws.com/{data['cliente']}"
 
     return jsonify({'message': 'Nota creada'}), 201
