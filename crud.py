@@ -14,11 +14,9 @@ app = Flask(__name__)
 CORS(app)
 
 bucket_name = os.getenv('BUCKET_NAME')
-aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
-aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 aws_region = os.getenv('REGION')
 
-bucket = boto3.client('s3', aws_region, aws_access_key_id, aws_secret_access_key)
+bucket = boto3.client('s3', aws_region)
 
 def get_db_connection():
     connection = pymysql.connect(

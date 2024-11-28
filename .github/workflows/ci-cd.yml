@@ -100,8 +100,7 @@ jobs:
                        --build-arg PASSWORD=$PASSWORD \
                        --build-arg NAME=$NAME \
                        --build-arg BUCKET_NAME=$BUCKET_NAME \
-                       --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-                       --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+                       --build-arg AWS_REGION=$AWS_REGION \
                        -t notas/crud .
           docker tag notas/crud:latest 060795930894.dkr.ecr.us-east-1.amazonaws.com/notas/crud:$TAG
           docker push 060795930894.dkr.ecr.us-east-1.amazonaws.com/notas/crud:$TAG
