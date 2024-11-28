@@ -18,7 +18,7 @@ aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
 aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 aws_region = os.getenv('REGION')
 
-bucket = boto3.client('s3', aws_region, aws_access_key_id, aws_secret_access_key)
+bucket = boto3.client('s3', aws_region)
 
 def get_db_connection():
     connection = pymysql.connect(
@@ -62,7 +62,7 @@ def create_nota():
 
     pdf_buffer.seek(0)
 
-    bucket.upload_fileobj(pdf_buffer, f'{data["cliente"]}.pdf')
+    bucket.upload_file(pdf_buffer,bucket_name,f'{data["cliente"]}.pdf')
     url = f"https://{bucket_name}.s3.amazonaws.com/{data['cliente']}"
 
     return jsonify({'message': 'Nota creada'}), 201
