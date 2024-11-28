@@ -6,6 +6,7 @@ import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import io
+import boto3
 
 load_dotenv()
 
