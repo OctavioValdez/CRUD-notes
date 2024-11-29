@@ -61,6 +61,14 @@ def create_nota():
     bucket = boto3.client('s3')
     bucket.upload_fileobj(pdf_buffer,bucket_name,f'{data["cliente"]}.pdf')
     url = f"https://{bucket_name}.s3.{os.getenv('REGION')}.amazonaws.com/{data['cliente']}"
+    api_url = "http://54.210.86.57:5000/send-email"
+    payload = {
+        "email": data["email"],
+        "url": url
+    }
+
+    response = requests.post(api_url, json=payload)
+
 
     return jsonify({'message': 'Nota creada'}), 201
 
